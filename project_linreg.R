@@ -23,4 +23,14 @@ fit_ols_model = function(X,y) {
               residuals=residuals))
 }
 
-
+# (Ongoing edits after covering more topics)
+# (a possible option to improve it might be to make it work like summary for "official"
+#  R packages like lm, glm, etc, i.e. just call summary(fit) and it calls this function automatically)
+# Prints out a summary of the linear model (sort of like summary(lm(...)))
+# Parameters: model (returned object from fit_ols_model)
+# Returns nothing, but prints a summary of the model
+summary.ols = function(model) {
+  cat("Coefficients: ")
+  cat(model$est_beta)
+  cat('\n')
+}

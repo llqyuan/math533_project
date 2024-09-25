@@ -1,0 +1,15 @@
+---
+title: "MATH 533 Project Report"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Possible reference: https://cran.r-project.org/web/packages/LongituRF/LongituRF.pdf
+
+## Methods implemented:
+
+## fit_ols_model
+

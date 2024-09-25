@@ -26,9 +26,10 @@ df = data.frame(X_nointercept)
 df$y_response = y
 
 fit = fit_ols_model(X,y)
-fit$est_beta
 lm_fit = lm(y_response ~ X1 + X2 + X3 + X4 + X5, data=df)
 summary(lm_fit)
+summary.ols(fit)
+
 max(abs(lm_fit$residuals - fit$residuals))
 max(abs(summary(lm_fit)$cov.unscaled - fit$cov_unscaled))
 max(abs(fitted(lm_fit) - fit$y_fitted))

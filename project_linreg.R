@@ -9,10 +9,13 @@
 # - residuals: vector of fitted residuals \hat{e}_i, i=1,2,...,n
 # - y_fitted: fitted values \hat{y}_i, i=1,2,...,n
 fit_ols_model = function(X,y) {
+  n = nrow(X)
+  p = ncol(X)
   cov_unscaled = solve(t(X) %*% X) # can reuse this calculation of (X^TX)^{-1}
   est_beta = c(cov_unscaled %*% t(X) %*% y)
   y_fitted = X %*% est_beta
   residuals = y - y_fitted
+  sigmahat2 = sum(residuals^2) / (n-p)
   hat_matrix = X %*% cov_unscaled %*% t(X)
   leverages = diag(hat_matrix)
   return(list(est_beta=est_beta, 
@@ -20,7 +23,8 @@ fit_ols_model = function(X,y) {
               cov_unscaled=cov_unscaled,
               hat_matrix=hat_matrix,
               leverages=leverages,
-              residuals=residuals))
+              residuals=residuals,
+              est_sigma = sqrt(sigmahat2)))
 }
 
 # (Ongoing edits after covering more topics)

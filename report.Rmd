@@ -11,5 +11,36 @@ Possible reference: https://cran.r-project.org/web/packages/LongituRF/LongituRF.
 
 ## Methods implemented:
 
-## fit_ols_model
+* fit_ols_model
+* summary.ols
+
+## fit_ols_model (work in progress)
+
+Fits the model and finds the ordinary least squares estimator. Returns the estimate $\hat\beta$ as well as relevant quantities.
+
+Parameters:
+
+* $X$: $n \times p$ design matrix
+* $y$: $n$-dimensional vector of responses
+
+Values returned:
+
+* est_beta: $\hat\beta$, the OLS estimate
+* y_fitted: $\hat y = X\hat\beta$, the fitted values
+* cov_unscaled: $(X^TX)^{-1}$, multiply by an estimate of $\sigma^2$ to get the variance of $\hat\beta$
+* hat_matrix: $H = X(X^TX)^{-1} X^T$
+* leverages: the diagonal elements of hat_matrix, $h_{ii}$
+* residuals: $\hat e = y - \hat y$
+* est_sigma: $\hat\sigma$, the square root of the bias-corrected estimate $\hat\sigma^2 = \frac{1}{n-p} \sum_{i=1}^n \hat e_i^2$
+
+## summary.ols (work in progress)
+
+A summary function that takes the output of fit_ols_model and summarizes the information there.
+Currently prints: estimate of $\beta$.
+
+Parameters: 
+
+* model: the returned output from a run of fit_ols_model
+
+
 
